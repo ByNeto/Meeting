@@ -1,0 +1,122 @@
+<%- contentFor('body') %>
+
+<link id="room-style" rel="stylesheet" href="assets/css/room.css">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" style="background-color: #474747;">
+            <ul class="sidebar-nav">
+                <div class="row justify-content-center" id="label">
+                    <span class="font"><img class="logo" src="assets/images/logos/label.png" />
+                        Sala Virtuais</span>
+                </div>
+                <% adms.forEach((e) => { %>
+                <div class="alignright"><a data-toggle="modal" data-target="#exampleModalCenter"><img class="img-act"
+                            style="width:18px;" src="assets/images/icons/pencil.png" /></a></div>
+                <li>
+                    <a style="width: 330px;" id="btn<%= e.room_name %>"><%= e.room_name %></a>
+                </li>
+                <% }); %>
+            </ul>
+            <ul class="btnul">
+                <li>
+                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter2"
+                        class="btn btn-success btn-block">Criar nova sala</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <div id="meet"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color: #fff;" class="modal-title" id="exampleModalLongTitle">Nome da sala</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" placeholder="Nome da sala">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Excluir</button>
+                <button type="button" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color: #fff;" class="modal-title" id="exampleModalLongTitle">Nome da sala</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" placeholder="Nome da sala">
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-edit">
+                <button type="button" class="btn btn-success">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://meet.jit.si/external_api.js"></script>
+<script>
+    var domain = "neto.naradio.com.br";
+    var options = {
+        roomName: '<%- room %>',
+        parentNode: document.querySelector('#meet'),
+        configOverwrite: { startWithAudioMuted: true },
+        interfaceConfigOverwrite: {
+            TOOLBAR_BUTTONS: [
+                'hangup',
+                'microphone',
+                'camera'
+            ]
+        },
+        userInfo: {
+            displayName: '<%- user %>',
+            email: '<%- mail %>'
+        },
+    }
+    var api = new JitsiMeetExternalAPI(domain, options);
+    // function io(x) {
+    //     let socket = new WebSocket(window.location.href.replace('https', 'wss').replace('http', 'wss'), "echo-protocol");
+    //     socket.onopen = (e) => {
+    //         console.log(e)
+    //         socket.send(x);
+    //     };
+    // }
+    var p = document.getElementsByTagName("iframe")[0].src.split('#')[0];
+</script>
+<% adms.forEach((e) => { %>
+<script>
+    document.getElementById("btn<%= e.room_name %>").onclick = function () {
+        document.getElementsByTagName("iframe")[0].src = `${p.split('/')[0]}//${p.split('/')[1]}${p.split('/')[2]}/<%= e.room_name %>-Superlógica`;
+    };
+</script>
+<% }); %>

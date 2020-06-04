@@ -1,0 +1,110 @@
+<%- contentFor('body') %>
+<header id="header" class="header fixed-top">
+	<div class="branding">
+		<div class="container-fluid">
+			<nav class="main-nav navbar navbar-expand-lg">
+				<div class="site-logo"><a class="scrollto" href="#hero-block"></div>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+					aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div id="navigation" class="navbar-collapse collapse  justify-content-lg-end mr-lg-3">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a class="nav-link btn btn-primary btn-sm" data-toggle="modal"
+								data-target="#createRoom" href="">Criar Sala</a></li>
+					</ul>
+					<!--//nav-->
+				</div>
+				<!--//navabr-collapse-->
+
+			</nav>
+			<!--//main-nav-->
+
+		</div>
+		<!--//container-->
+	</div>
+	<!--//branding-->
+</header>
+<!--//header-->
+
+<section id="speakers-section" class="speakers-section section">
+	<div class="container">
+		<h3 class="section-heading text-center mb-3">Superlógica Meeting</h3>
+		<div class="section-intro text-center single-col-max mx-auto mb-5">Clique na sala que deseja acessar.</div>
+		<div class="row">
+			<% adms.forEach((e) => { %>
+			<div class="col-12 col-md-6 col-lg-3 mb-4">
+				<div class="card rounded-0">
+					<div class="card-body">
+						<h5 class="card-title mb-2"><%= e.room_name %></h5>
+						<div class="card-text mb-3">
+							<div class="meta">Sala <%= e.room_name %></div>
+						</div>
+					</div>
+					<div class="card-footer text-muted">
+						<button type="button" class="btn btn-primary start-room" data-toggle="modal"
+							data-target="#<%= e.room_name %>">
+							Entrar na sala
+						</button>
+					</div>
+				</div>
+			</div>
+			<% }); %>
+		</div>
+	</div>
+</section>
+
+<footer class="footer py-5 theme-bg-primary">
+	<div class="container text-center">
+		<!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+		<small class="copyright">Designed with <i class="fas fa-heart" style="color: #EC645E;"></i> by <a href="#"
+				target="_blank">Superlógica</a> for developers</small>
+
+	</div>
+</footer>
+
+<span id="start-room-modal"></span>
+
+<div class="modal fade" id="createRoom" tabindex="-1" role="dialog" aria-labelledby="createRoomLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="createRoomLabel">Criar Sala</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form class="form-group" action="/" method="post">
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-2">
+								&nbsp;
+							</div>
+							<div class="col-8">
+								<div class="input-group mb-3">
+									<input type="text" id="input_newroom" name="input_newroom" class="form-control"
+										placeholder="Nome da sala" required>
+								</div>
+								<div class="input-group mb-3">
+									<input type="text" value="6b0ce6ed-3bd2-4b12-9e4a" id="input_licenc" name="input_licenc" class="form-control"
+										 readonly>
+								</div>
+							</div>
+							<div class="col-2">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					<button type="submit" class="btn btn-primary">Criar sala</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

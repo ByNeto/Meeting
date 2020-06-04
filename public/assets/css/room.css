@@ -1,0 +1,113 @@
+body {
+    background-color: gray;
+}
+
+.font {
+    margin-top: 16px;
+    font-size: xx-large;
+    font-weight: 600;
+    color: #fff;
+}
+
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 20%;
+}
+
+.sidebar-nav li {
+    font-size: 15px;
+    text-indent: 25px;
+    line-height: 60px;
+}
+
+.sidebar-nav li a {
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+    background: gray;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#label {
+    background-color: darkturquoise;
+    margin-bottom: 30px;
+    margin-left: -50px;
+    width: 377px;
+    height: 80px;
+}
+
+.btnul {
+    margin-top: 32rem;
+    list-style-type: none;
+}
+
+.btn-success {
+    background-color: #ccf45d;
+}
+
+.logo {
+    width: 45px;
+    margin-top: -5px;
+}
+
+.alignright {
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    pointer-events: auto;
+    background-color: #474747;
+    background-clip: padding-box;
+    border: 2px solid grey;
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.modal-header {
+    border-bottom: 0px;
+}
+
+.modal-footer {
+    border-top: 0px;
+}
+
+.modal {
+    width: 125%;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer-edit {
+    display: grid;
+    justify-content: right;
+    margin-right: 78px;
+}
+
+.img-act:hover{
+    background-color: darkturquoise;
+    border-radius: 100px;
+    width:22px;
+}
